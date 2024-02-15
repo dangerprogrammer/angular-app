@@ -1,0 +1,7 @@
+@if (hasUsers) {
+    @for (user of users; track $index) {
+        <app-user [userInfo]="user"/>
+    }
+} @else {
+    <div>Não tem users!</div>
+}
