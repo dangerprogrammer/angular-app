@@ -3,12 +3,12 @@ import { UserService } from '../services/user.service';
 
 export const userGuard: CanActivateFn = () => {
   const { getStorageStatus } = new UserService();
-  const { navigate } = new Router();
+  const routerService = new Router();
 
   const isLogged = getStorageStatus();
 
   if (isLogged) return !0;
 
-  navigate(["/sign-up"]);
+  routerService.navigate(["/sign-up"]);
   return !1;
 };

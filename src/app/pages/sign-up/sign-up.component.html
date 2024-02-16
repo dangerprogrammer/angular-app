@@ -1,1 +1,54 @@
-<p>sign-up works!</p>
+<main [className]="'main-container'">
+    <section [className]="'signup-container'">
+        <div [className]="'signup-header'">
+            <img src="../../../assets/imgs/liga_logo.png" [alt]="'LIGA Logo'"/>
+        </div>
+        <form [className]="'signup-body'" (submit)="printForm()" [formGroup]="form">
+            <ul [className]="'signup-inputs'">
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'name'">Nome</label>
+                    <input type="text" [className]="'input-text'" id="name" [placeholder]="'Digite seu nome'" name="name" formControlName="name"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'cep'">CEP</label>
+                    <input type="text" [className]="'input-text'" id="cep" [placeholder]="'00000-000'" formControlName="cep"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'phone'">Celular</label>
+                    <input type="tel" [className]="'input-text'" id="phone" [pattern]="'([0-9]{2}) [0-9]{5}-[0-9]{4}'" [placeholder]="'(00) 00000-0000'" formControlName="phone"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'city'">Cidade</label>
+                    <input type="text" [className]="'input-text'" id="city" formControlName="city"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'cpf'">CPF</label>
+                    <input type="text" [className]="'input-text'" id="cpf" [placeholder]="'000.000.000-00'" formControlName="cpf"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'bairro'">Bairro</label>
+                    <input type="text" [className]="'input-text'" id="bairro" formControlName="bairro"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'email'">Email</label>
+                    <input type="text" [className]="'input-text'" id="email" [placeholder]="'Digite seu email'"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'state'">Estado</label>
+                    <input type="text" [className]="'input-text'" id="state"/>
+                </li>
+                <li [className]="'input'">
+                    <label [className]="'input-desc'" [htmlFor]="'password'">Senha</label>
+                    <input type="password" [className]="'input-text'" id="password" [placeholder]="'xxxxxxxxxx'"/>
+                </li>
+            </ul>
+        </form>
+        <button [className]="'signup-button_submit'" [type]="'submit'" (click)="printForm()">Concluir</button>
+    </section>
+    <section [className]="'img-container'">
+        <span [className]="'blob'"></span>
+        <div [className]="'img-box'">
+            <img src="../../../assets/imgs/signup.png" [alt]="'Sign-Up Image'" [height]="300"/>
+        </div>
+    </section>
+</main>
