@@ -17,7 +17,7 @@ export class UserService {
     })
   }
 
-  setSigned = (status: any) => {
+  setSigned = (status: boolean | object) => {
     this.isSigned = status ?? !this.isSigned;
 
     localStorage.setItem("login", this.isSigned);
