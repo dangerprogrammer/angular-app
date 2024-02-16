@@ -15,7 +15,7 @@
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'phone'">Celular</label>
-                    <input type="tel" [className]="'input-text'" id="phone" [pattern]="'([0-9]{2}) [0-9]{5}-[0-9]{4}'" [placeholder]="'(00) 00000-0000'" formControlName="phone"/>
+                    <input type="tel" [className]="'input-text'" id="phone" [showMaskTyped]="true" [mask]="'(00) 00000-0000'" [placeholder]="'(00) 00000-0000'" formControlName="phone"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'city'">Cidade</label>
