@@ -7,15 +7,15 @@
             <ul [className]="'signup-inputs'">
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'name'">Nome</label>
-                    <input type="text" [className]="'input-text'" id="name" [placeholder]="'Digite seu nome'" name="name" formControlName="name"/>
+                    <input type="text" [className]="'input-text'" id="name" [placeholder]="'Digite seu nome'" formControlName="name"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'cep'">CEP</label>
-                    <input type="text" [className]="'input-text'" id="cep" [placeholder]="'00000-000'" formControlName="cep"/>
+                    <input type="text" [className]="'input-text'" id="cep" [showMaskTyped]="true" mask="00000-000" placeHolderCharacter="0" formControlName="cep"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'phone'">Celular</label>
-                    <input type="tel" [className]="'input-text'" id="phone" [showMaskTyped]="true" [mask]="'(00) 00000-0000'" [placeholder]="'(00) 00000-0000'" formControlName="phone"/>
+                    <input type="tel" [className]="'input-text'" id="phone" [showMaskTyped]="true" mask="(00) 00000-0000" placeHolderCharacter="0" formControlName="phone"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'city'">Cidade</label>
@@ -23,7 +23,7 @@
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'cpf'">CPF</label>
-                    <input type="text" [className]="'input-text'" id="cpf" [placeholder]="'000.000.000-00'" formControlName="cpf"/>
+                    <input type="text" [className]="'input-text'" id="cpf" [showMaskTyped]="true" mask="CPF_CNPJ" placeHolderCharacter="0" formControlName="cpf"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'bairro'">Bairro</label>
@@ -31,15 +31,15 @@
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'email'">Email</label>
-                    <input type="text" [className]="'input-text'" id="email" [placeholder]="'Digite seu email'"/>
+                    <input type="text" [className]="'input-text'" id="email" [placeholder]="'Digite seu email'" formControlName="email"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'state'">Estado</label>
-                    <input type="text" [className]="'input-text'" id="state"/>
+                    <input type="text" [className]="'input-text'" id="state" formControlName="state"/>
                 </li>
                 <li [className]="'input'">
                     <label [className]="'input-desc'" [htmlFor]="'password'">Senha</label>
-                    <input type="password" [className]="'input-text'" id="password" [placeholder]="'xxxxxxxxxx'"/>
+                    <input type="password" [className]="'input-text'" id="password" [placeholder]="'xxxxxxxxxx'" formControlName="password"/>
                 </li>
             </ul>
         </form>

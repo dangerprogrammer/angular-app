@@ -25,6 +25,6 @@ export class SignUpComponent {
   });
 
   protected printForm() {
-    console.log(this.form);
+    console.log(this.form.value);
   }
 }
