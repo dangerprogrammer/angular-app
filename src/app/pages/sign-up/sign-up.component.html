@@ -5,50 +5,137 @@
         </div>
         <form [className]="'signup-body'" (submit)="printForm()" [formGroup]="form">
             <ul [className]="'signup-inputs'">
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'name'">Nome</label>
-                    <input type="text" [className]="'input-text'" id="name" [placeholder]="'Digite seu nome'" formControlName="name"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Nome</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('name')?.invalid"
+                            [class.valid]="form.get('name')?.valid"
+                            type="text" [className]="'input'" id="name"
+                            [placeholder]="'Digite seu nome'" formControlName="name"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'cep'">CEP</label>
-                    <input type="text" [className]="'input-text'" id="cep" [showMaskTyped]="true" mask="00000-000" placeHolderCharacter="0" formControlName="cep"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">CEP</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('cep')?.invalid"
+                            [class.valid]="form.get('cep')?.valid"
+                            type="text" [className]="'input'" id="cep" autocomplete
+                            [showMaskTyped]="true" mask="00000-000" formControlName="cep"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'phone'">Celular</label>
-                    <input type="tel" [className]="'input-text'" id="phone" [showMaskTyped]="true" mask="(00) 00000-0000" placeHolderCharacter="0" formControlName="phone"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Celular</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="!(form.get('phone')?.valid)"
+                            [class.valid]="form.get('phone')?.valid"
+                            type="tel" [className]="'input'" id="phone"
+                            [showMaskTyped]="true" mask="(00) 00000-0000"
+                            formControlName="phone"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'city'">Cidade</label>
-                    <input type="text" [className]="'input-text'" id="city" formControlName="city"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Cidade</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('city')?.invalid"
+                            [class.valid]="form.get('city')?.valid"
+                            [(ngModel)]="city" type="text"
+                            [className]="'input input-auto'" id="city"
+                            formControlName="city"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'cpf'">CPF</label>
-                    <input type="text" [className]="'input-text'" id="cpf" [showMaskTyped]="true" mask="CPF_CNPJ" placeHolderCharacter="0" formControlName="cpf"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">CPF</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('cpf')?.invalid"
+                            [class.valid]="form.get('cpf')?.valid"
+                            type="text" [className]="'input'" id="cpf"
+                            [showMaskTyped]="true" mask="000.000.000-00"
+                            formControlName="cpf"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'bairro'">Bairro</label>
-                    <input type="text" [className]="'input-text'" id="bairro" formControlName="bairro"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Bairro</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('bairro')?.invalid"
+                            [class.valid]="form.get('bairro')?.valid"
+                            [class.input-auto]="validBairro"
+                            [(ngModel)]="bairro" type="text"
+                            [className]="'input input-auto'" id="bairro"
+                            formControlName="bairro"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'email'">Email</label>
-                    <input type="text" [className]="'input-text'" id="email" [placeholder]="'Digite seu email'" formControlName="email"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Email</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('email')?.invalid"
+                            [class.valid]="form.get('email')?.valid"
+                            type="text" [className]="'input'" id="email"
+                            [placeholder]="'Digite seu email'" formControlName="email"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'state'">Estado</label>
-                    <input type="text" [className]="'input-text'" id="state" formControlName="state"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Estado</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('state')?.invalid"
+                            [class.valid]="form.get('state')?.valid"
+                            [(ngModel)]="state" type="text"
+                            [className]="'input input-auto'" id="state"
+                            formControlName="state"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
-                <li [className]="'input'">
-                    <label [className]="'input-desc'" [htmlFor]="'password'">Senha</label>
-                    <input type="password" [className]="'input-text'" id="password" [placeholder]="'xxxxxxxxxx'" formControlName="password"/>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Senha</label>
+                    <div [className]="'input-text'">
+                        <input
+                            [class.invalid]="form.get('password')?.invalid"
+                            [class.valid]="form.get('password')?.valid"
+                            type="password" [className]="'input'" id="password"
+                            [placeholder]="'xxxxxxxxxx'" formControlName="password"
+                        />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon blue" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon red" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm75.31 260.69a16 16 0 11-22.62 22.62L256 278.63l-52.69 52.68a16 16 0 01-22.62-22.62L233.37 256l-52.68-52.69a16 16 0 0122.62-22.62L256 233.37l52.69-52.68a16 16 0 0122.62 22.62L278.63 256z"/></svg>
+                    </div>
                 </li>
             </ul>
         </form>
-        <button [className]="'signup-button_submit'" [type]="'submit'" (click)="printForm()">Concluir</button>
+        <button [className]="'signup-button_submit valid-form'" [class.valid-form]="!form.valid" [type]="'submit'" (click)="printForm()">Concluir</button>
     </section>
     <section [className]="'img-container'">
         <span [className]="'blob'"></span>
         <div [className]="'img-box'">
-            <img src="../../../assets/imgs/signup.png" [alt]="'Sign-Up Image'" [height]="300"/>
+            <img src="../../../assets/imgs/signup.png" [alt]="'Sign-Up Image'"/>
         </div>
     </section>
 </main>
