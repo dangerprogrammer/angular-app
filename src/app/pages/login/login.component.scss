@@ -205,3 +205,15 @@
         }
     }
 }
+
+@media screen and (min-width: 64rem) {
+    .img-container {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: calc(64rem - 1px)) {
+    .img-container {
+        display: none;
+    }
+}
