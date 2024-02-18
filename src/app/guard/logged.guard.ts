@@ -8,12 +8,12 @@ export const loggedGuard: CanActivateFn = (route, state) => {
   const hasRedirect = getRedirect();
   const isLogged = getStorageStatus();
 
-  if (!isLogged) return !0;
-
   if (hasRedirect && state.url != hasRedirect) {
     routerService.navigate([hasRedirect]);
     return !1;
   };
+
+  if (!isLogged) return !0;
 
   routerService.navigate(["/"]);
   return !1;

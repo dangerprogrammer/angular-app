@@ -27,9 +27,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const prevValues = JSON.parse(this.user.getExists() as string);
 
-    this.email = prevValues.email;
-    this.password = prevValues.password;
-    this.cdr.detectChanges();
+    if (prevValues) {
+      this.email = prevValues.email;
+      this.password = prevValues.password;
+      this.cdr.detectChanges();
+    };
   }
 
   protected form = this.fb.group({
