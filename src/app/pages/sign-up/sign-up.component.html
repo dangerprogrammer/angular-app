@@ -3,7 +3,7 @@
         <div [className]="'signup-header'">
             <img src="../../../assets/imgs/liga_logo.png" [alt]="'LIGA Logo'"/>
         </div>
-        <form [className]="'signup-body'" (submit)="printForm()" [formGroup]="form">
+        <form [className]="'signup-body'" [formGroup]="form">
             <ul [className]="'signup-inputs'">
                 <li [className]="'input-container'">
                     <label [className]="'input-desc'">Nome</label>
@@ -130,10 +130,17 @@
                 </li>
             </ul>
         </form>
-        <button [className]="'signup-button_submit valid-form'" [class.valid-form]="!form.valid" [type]="'submit'" (click)="printForm()">Concluir</button>
+        <div [className]="'signup-submit'">
+            <button [className]="'signup-button_submit valid-form'" [class.valid-form]="!form.valid" [type]="'submit'" (click)="submitForm()">Concluir</button>
+            <button [className]="'login-button'" (click)="goToLogin()">Já possui um cadastro? Faça login!</button>
+        </div>
     </section>
     <section [className]="'img-container'">
-        <span [className]="'blob'"></span>
+        <span [className]="'blob'">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#E4E7FF" d="M34.7,-30C51.1,-18.2,75,-9.1,79.5,4.5C84.1,18.2,69.3,36.4,52.9,44.8C36.4,53.2,18.2,51.7,0.1,51.6C-18,51.5,-35.9,52.7,-50.3,44.3C-64.6,35.9,-75.4,18,-72.6,2.8C-69.8,-12.3,-53.3,-24.6,-39,-36.4C-24.6,-48.3,-12.3,-59.7,-1.6,-58.1C9.1,-56.5,18.2,-41.9,34.7,-30Z" transform="translate(100 100)" />
+            </svg>
+        </span>
         <div [className]="'img-box'">
             <img src="../../../assets/imgs/signup.png" [alt]="'Sign-Up Image'"/>
         </div>

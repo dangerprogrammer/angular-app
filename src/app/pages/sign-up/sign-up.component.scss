@@ -1,24 +1,19 @@
 .main-container {
     height: 100%;
     width: 100%;
+    min-height: 100vh;
     display: flex;
 
     .signup-container {
         flex-shrink: 0;
         flex-grow: 1;
-        padding: 1em max(2em, 3vw);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
         box-shadow: 1em 0 3em #0003;
 
         .signup-body {
-            padding: 1em;
-
             .signup-inputs {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5em 3vw;
 
                 .input-container {
@@ -37,8 +32,6 @@
                         font-size: .9em;
                         border-radius: .5em;
                         background: #e5e5e5c0;
-                        width: 30vw;
-                        max-width: 20em;
                         display: flex;
                         flex-direction: row;
                         align-items: center;
@@ -120,36 +113,67 @@
             }
         }
 
-        .signup-button_submit {
-            background: #1e2772;
-            box-shadow: 0 .2em .5em #1e277280;
-            font-weight: 500;
-            letter-spacing: .03em;
-            font-size: 1.1em;
-            padding: .7em 4em;
-            border-radius: .5em;
-            color: #eee;
-            cursor: pointer;
-            transition:
-                scale .15s ease-in-out,
-                opacity .3s ease-in-out;
+        .signup-submit {
+            display: flex;
+            gap: .5em;
+            flex-direction: column;
 
-            &.valid-form {
-                opacity: .5;
-                pointer-events: none;
+            .signup-button_submit {
+                background: #1e2772;
+                box-shadow: 0 .2em .5em #1e277280;
+                font-weight: 500;
+                letter-spacing: .03em;
+                font-size: 1.1em;
+                padding: .7em 4em;
+                border-radius: .5em;
+                color: #eee;
+                cursor: pointer;
+                transition:
+                    scale .15s ease-in-out,
+                    opacity .3s ease-in-out;
+
+                &.valid-form {
+                    opacity: .5;
+                    pointer-events: none;
+                }
+
+                &:hover {
+                    scale: 1.05;
+                }
             }
 
-            &:hover {
-                scale: 1.05;
+            .login-button {
+                color: #1e2772;
+                font-weight: 600;
+                font-size: .95em;
+                text-decoration: none;
+                cursor: pointer;
+                background: transparent;
             }
         }
     }
 
     .img-container {
+        position: relative;
         flex-grow: 30;
-        display: flex;
+        max-width: 64em;
         align-items: center;
         justify-content: center;
+        pointer-events: none;
+        overflow: hidden;
+
+        .blob {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+
+            svg {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
 
         .img-box {
             flex-grow: 1;
@@ -159,6 +183,80 @@
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 64rem) {
+    .img-container {
+        display: flex;
+    }
+
+    .input-text {
+        width: 30vw;
+        max-width: 20em;
+    }
+}
+
+@media screen and (max-width: calc(64rem - 1px)) {
+    .img-container {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 50rem) and (max-width: calc(64rem - 1px)) {
+    .signup-body {
+        width: 100%;
+
+        .signup-inputs {
+            width: 100%;
+
+            .input-text {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 50rem) {
+    .signup-container {
+        justify-content: space-around;
+        padding: 1em max(2em, 3vw);
+
+        .signup-body {
+            padding: 1em;
+
+            .signup-inputs {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: calc(50rem - 1px)) {
+    .signup-container {
+        padding: 2em;
+
+        .signup-body {
+            padding: 2em;
+            width: 100%;
+            
+            .signup-inputs {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                .input-container {
+                    width: 100%;
+                    max-width: 30em;
+
+                    .input-text {
+                        width: 100%;
+                    }
+                }
             }
         }
     }

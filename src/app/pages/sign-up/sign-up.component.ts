@@ -2,6 +2,9 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { FindCpfService } from '../../services/find-cpf.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,13 +20,18 @@ export class SignUpComponent implements OnInit {
   validBairro: boolean = !0;
   validForm: boolean = !0;
 
-  constructor(private cpf: FindCpfService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cpf: FindCpfService,
+    private cdr: ChangeDetectorRef,
+    private user: UserService,
+    private router: Router
+  ) {}
 
   private fb = inject(FormBuilder);
 
   protected form = this.fb.group({
     name: ['', [Validators.required]],
-    cep: ['', [Validators.required]],
+    cep: ['', [Validators.required, Validators.minLength(8)]],
     phone: ['', [Validators.required, Validators.minLength(11)]],
     city: ['', [Validators.required]],
     cpf: ['', [Validators.required, Validators.minLength(11)]],
@@ -57,7 +65,17 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  protected printForm() {
-    console.log(this.form);
+  protected submitForm() {
+    const userCreation = this.user.createUser(this.form.value as User);
+    
+    userCreation.subscribe(user => {
+      this.user.setSigned(user);
+      this.router.navigate(['/']);
+    });
+  }
+
+  protected goToLogin() {
+    this.user.setRedirect('/login');
+    this.router.navigate(['/login']);
   }
 }
