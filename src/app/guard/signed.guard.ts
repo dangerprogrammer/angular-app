@@ -7,7 +7,7 @@ export const signedGuard: CanActivateFn = (route, state) => {
 
   const hasRedirect = getRedirect();
 
-  if (hasRedirect) {
+  if (hasRedirect && state.url != hasRedirect) {
     routerService.navigate([hasRedirect]);
     return !1;
   };

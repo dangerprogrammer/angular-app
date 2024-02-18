@@ -1,1 +1,54 @@
-<p>login works!</p>
+<main [className]="'main-container'">
+    <section [className]="'login-container'">
+        <div [className]="'login-header'">
+            <img src="../../../assets/imgs/liga_logo.png" [alt]="'LIGA Logo'"/>
+        </div>
+        <form [className]="'login-body'" [formGroup]="form">
+            <ul [className]="'inputs-container'">
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Email</label>
+                    <div [className]="'input-content'">
+                        <input
+                            [class.invalid]="form.get('email')?.invalid || noUser"
+                            [class.valid]="!(form.get('email')?.invalid || noUser)"
+                            type="text" [className]="'input'" id="email"
+                            autocomplete="username" [(ngModel)]="email"
+                            [placeholder]="'Digite seu email'" formControlName="email"
+                        />
+                        <span [className]="'icon-content'">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><rect x="48" y="96" width="416" height="320" rx="40" ry="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M112 160l144 112 144-112"/></svg>
+                        </span>
+                    </div>
+                    <small [className]="'wrong'" [hidden]="!noUser">Não existe nenhum usuário com este e-mail!<br><span (click)="goToSignup()">Registre-se já!</span></small>
+                </li>
+                <li [className]="'input-container'">
+                    <label [className]="'input-desc'">Senha</label>
+                    <div [className]="'input-content'">
+                        <input
+                            [class.invalid]="form.get('password')?.invalid || wrongPassword"
+                            [class.valid]="!(form.get('password')?.invalid || wrongPassword)"
+                            type="password" [className]="'input'" id="password"
+                            autocomplete="current-password" [(ngModel)]="password"
+                            [placeholder]="'xxxxxxxxxx'" formControlName="password"
+                        />
+                        <span [className]="'icon-content'">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M336 208v-95a80 80 0 00-160 0v95" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><rect x="96" y="208" width="320" height="272" rx="48" ry="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+                        </span>
+                    </div>
+                    <small [className]="'wrong'" [hidden]="!wrongPassword">A senha digitada está incorreta!</small>
+                </li>
+                <div [className]="'end'">
+                    <button [className]="'hover-a'">Esqueceu sua senha?</button>
+                </div>
+            </ul>
+            <button [className]="'login-button'" (click)="submitLogin()">Entrar</button>
+            <span [className]="'or-signup'"></span>
+            <button [className]="'signup-button'" (click)="goToSignup()">Registre-se</button>
+        </form>
+    </section>
+    <section [className]="'img-container'">
+        <div [className]="'img-box'">
+            <img src="../../../assets/imgs/login.png" [alt]="'Login Image'"/>
+        </div>
+    </section>
+</main>

@@ -11,6 +11,7 @@
                         <input
                             [class.invalid]="form.get('name')?.invalid"
                             [class.valid]="form.get('name')?.valid"
+                            autocomplete="username"
                             type="text" [className]="'input'" id="name"
                             [placeholder]="'Digite seu nome'" formControlName="name"
                         />
@@ -108,6 +109,7 @@
                             [class.invalid]="form.get('state')?.invalid"
                             [class.valid]="form.get('state')?.valid"
                             [(ngModel)]="state" type="text"
+                            autocomplete="username"
                             [className]="'input input-auto'" id="state"
                             formControlName="state"
                         />
@@ -121,6 +123,7 @@
                         <input
                             [class.invalid]="form.get('password')?.invalid"
                             [class.valid]="form.get('password')?.valid"
+                            autocomplete="current-password"
                             type="password" [className]="'input'" id="password"
                             [placeholder]="'xxxxxxxxxx'" formControlName="password"
                         />
@@ -132,7 +135,7 @@
         </form>
         <div [className]="'signup-submit'">
             <button [className]="'signup-button_submit valid-form'" [class.valid-form]="!form.valid" [type]="'submit'" (click)="submitForm()">Concluir</button>
-            <button [className]="'login-button'" (click)="goToLogin()">Já possui um cadastro? Faça login!</button>
+            <button [className]="'login-button hover-a'" (click)="goToLogin()">Já possui um cadastro? Faça login!</button>
         </div>
     </section>
     <section [className]="'img-container'">

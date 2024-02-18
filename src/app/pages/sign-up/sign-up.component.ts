@@ -24,10 +24,10 @@ export class SignUpComponent implements OnInit {
     private cpf: FindCpfService,
     private cdr: ChangeDetectorRef,
     private user: UserService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
-  private fb = inject(FormBuilder);
 
   protected form = this.fb.group({
     name: ['', [Validators.required]],
@@ -66,11 +66,22 @@ export class SignUpComponent implements OnInit {
   }
 
   protected submitForm() {
-    const userCreation = this.user.createUser(this.form.value as User);
-    
-    userCreation.subscribe(user => {
-      this.user.setSigned(user);
-      this.router.navigate(['/']);
+    const email = this.form.get('email')?.value,
+          hasUser = this.user.getUserByEmail(email as string);
+
+    hasUser.subscribe(existsUser => {
+      const userCreation = this.user.createUser(this.form.value as User);
+
+      if (existsUser) {
+        this.user.setExists(existsUser as User);
+        this.user.setRedirect('/login');
+        this.router.navigate(['/login']);
+      } else {
+        userCreation.subscribe(user => {
+          this.user.setSigned(user as User);
+          this.router.navigate(['/']);
+        });
+      };
     });
   }
 

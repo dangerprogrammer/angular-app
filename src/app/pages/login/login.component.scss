@@ -1,0 +1,207 @@
+@use '../../../styles' as global;
+
+.main-container {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .login-container {
+        flex-shrink: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 1em max(2em, 3vw);
+        box-shadow: -1em 0 3em #0002;
+
+        .login-body {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            width: 100%;
+            max-width: 40em;
+
+            .inputs-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5em;
+
+                .input-container {
+                    display: flex;
+                    flex-direction: column;
+                    color: #555;
+                    gap: .4em;
+                    transition: letter-spacing .15s;
+
+                    .input-content {
+                        $red: #f00;
+                        $blue: #5e67b2;
+                        position: relative;
+                        font-size: .9em;
+                        border-radius: .5em;
+                        background: #e5e5e5c0;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-end;
+                        transition: 
+                            background .15s ease-in-out,
+                            border-color .15s ease-in-out;
+                        border: 2px solid transparent;
+                        overflow: hidden;
+
+                        .input {
+                            color: #333;
+                            font-weight: 500;
+                            font-size: 1em;
+                            width: 100%;
+                            background: transparent;
+                            border-radius: .5em;
+                            padding-inline: 1.35em;
+                            height: global.$input-size;
+                            
+                        }
+
+                        &:has(.input:focus) {
+                            background: transparent;
+
+                            &:has(.input:not(.valid, .invalid, .ng-valid, .ng-invalid)) {
+                                border-color: #ddd;
+                            }
+                        }
+
+                        &:has(.input.invalid), &:has(.input.ng-invalid:focus) {
+                            border-color: $red;
+                        }
+
+                        &:has(.input.valid) {
+                            border-color: $blue;
+                        }
+
+                        .icon-content {
+                            height: global.$input-size;
+                            width: global.$input-size;
+                            flex-shrink: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-top-left-radius: .4em;
+                            border-bottom-left-radius: .4em;
+                            background: global.$dark-blue;
+                            color: #eee;
+                            overflow: hidden;
+
+                            .ionicon {
+                                scale: 1.5;
+                            }
+                        }
+                    }
+
+                    .wrong {
+                        color: red;
+                    }
+
+                    &:has(.input:focus) {
+                        letter-spacing: .2em;
+                    }
+                }
+
+                .end {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+
+                    .hover-a {
+                        cursor: pointer;
+                        // font-size: 1.05em;
+                        background: transparent;
+                        text-align: end;
+                    }
+                }
+            }
+
+            .login-button, .signup-button {
+                padding: .7em 4em;
+                font-size: 1.1em;
+                letter-spacing: .03em;
+                border-radius: .5em;
+                font-weight: 500;
+                cursor: pointer;
+                transition: scale .15s ease-in-out;
+
+                &:hover {
+                    scale: 1.05;
+                }
+            }
+
+            .login-button {
+                color: #eee;
+                background: global.$dark-blue;
+                box-shadow: 0 .2em .25em #1e277270;
+            }
+
+            .or-signup {
+                position: relative;
+                opacity: .35;
+                pointer-events: none;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: white;
+                color: #555a;
+                width: 100%;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    z-index: -1;
+                    background: currentColor;
+                }
+
+                &::after {
+                    content: 'ou';
+                    position: relative;
+                    background: white;
+                    padding-inline: 1.2em;
+                }
+            }
+
+            .signup-button {
+                color: global.$dark-blue;
+                border: 2px solid global.$dark-blue;
+                background: transparent;
+            }
+        }
+    }
+
+    .img-container {
+        position: relative;
+        flex-grow: 30;
+        z-index: -1;
+        max-height: 100vh;
+        max-width: 64em;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        overflow: hidden;
+        background: #f7f7f7;
+
+        .img-box {
+            flex-grow: 1;
+
+            img {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
