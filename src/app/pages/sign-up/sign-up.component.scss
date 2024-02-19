@@ -20,15 +20,18 @@
 
                 .input-container {
                     position: relative;
+                    $red: #f00;
+                    $blue: #5e67b2;
                     display: flex;
                     color: #555;
                     flex-direction: column;
                     gap: .4em;
-                    transition: letter-spacing .15s;
+
+                    .input-desc {
+                        transition: letter-spacing .25s;
+                    }
 
                     .input-text {
-                        $red: #f00;
-                        $blue: #5e67b2;
                         position: relative;
                         font-size: .9em;
                         border-radius: .5em;
@@ -37,7 +40,7 @@
                         flex-direction: row;
                         align-items: center;
                         justify-content: flex-end;
-                        transition: 
+                        transition:
                             background .15s ease-in-out,
                             border-color .15s ease-in-out;
                         border: 2px solid transparent;
@@ -55,24 +58,6 @@
 
                         &:has(.input.input-auto) {
                             pointer-events: none;
-                        }
-
-                        &:has(.input.invalid), &:has(.input.ng-invalid:focus) {
-                            border-color: $red;
-
-                            .ionicon.red {
-                                opacity: 1;
-                                scale: 1;
-                            }
-                        }
-
-                        &:has(.input.valid) {
-                            border-color: $blue;
-
-                            &:has(.input:focus) .ionicon.blue {
-                                opacity: 1;
-                                scale: 1;
-                            }
                         }
 
                         &:has(.input:where(.valid, .invalid)) {
@@ -108,8 +93,35 @@
                         }
                     }
 
-                    &:has(.input:focus) {
-                        letter-spacing: .2em;
+                    &:has(.input:focus) .input-desc {
+                        letter-spacing: .1em;
+                    }
+
+                    &:has(.input.invalid),
+                    &:has(.input.ng-invalid:focus) {
+                        color: $red;
+
+                        .input-text {
+                            border-color: $red;
+
+                            .ionicon.red {
+                                opacity: 1;
+                                scale: 1;
+                            }
+                        }
+                    }
+
+                    &:has(.input.valid) {
+                        color: $blue;
+
+                        .input-text {
+                            border-color: $blue;
+    
+                            &:has(.input:focus) .ionicon.blue {
+                                opacity: 1;
+                                scale: 1;
+                            }
+                        }
                     }
                 }
             }
@@ -244,7 +256,7 @@
         .signup-body {
             padding: 2em;
             width: 100%;
-            
+
             .signup-inputs {
                 display: flex;
                 flex-direction: column;

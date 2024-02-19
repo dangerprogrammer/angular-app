@@ -9,6 +9,7 @@ interface User {
     city: string;
     bairro: string;
     state: string;
+    skin?: string;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -12,13 +12,9 @@ export class UserService {
 
   getStorageStatus = () => localStorage.getItem("login");
 
-  getAllUsers = () => this.http.get<User[]>('api/users');
+  getAllUsers = () => this.http.get<User[]>('nest-api/users');
 
-  getUserById = (id: number) => {
-    this.http.get<User>(`api/users/${id}`).subscribe(user => {
-      console.log(user);
-    });
-  }
+  getUserById = (id: number) => this.http.get<User>(`nest-api/users/${id}`);
 
   getUserByEmail = (email: string): Observable<any> =>
   this.getAllUsers().pipe(map(users => {
@@ -27,7 +23,7 @@ export class UserService {
     return user;
   }));
 
-  createUser = (user: User) => this.http.post('api/users', user);
+  createUser = (user: User) => this.http.post('nest-api/users', user);
 
   setSigned = (status: boolean | User) => {
     this.isSigned = status ?? !this.isSigned;

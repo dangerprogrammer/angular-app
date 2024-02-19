@@ -1,1 +1,13 @@
-<p>home works!</p>
+<main [className]="'main-container'">
+    @if (loaded) {
+        @if (hasUsers) {
+            @for (user of users; track $index) {
+                <app-user [homeUser]="user"/>
+            }
+        } @else {
+            <div>Dont has users</div>
+        }
+    } @else {
+        <div>Loading</div>
+    }
+</main>

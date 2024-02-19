@@ -44,14 +44,12 @@ export class LoginComponent implements OnInit {
           loginPassword = this.form.get('password')?.value,
           hasUser = this.user.getUserByEmail(loginEmail as string);
 
-    hasUser.subscribe((user) => user ? (user.email == loginEmail && (() => {
+    hasUser.subscribe(user => user ? (user.email == loginEmail && (() => {
       if (user.password == loginPassword) {
         this.user.setSigned(user as User);
         this.router.navigate(['/']);
-      } else {
-        this.wrongPassword = !0;
-      };
-    })()) : (() => this.noUser = !0)());
+      } else this.wrongPassword = !0;
+    })()) : (this.noUser = !0));
   }
 
   protected goToSignup() {

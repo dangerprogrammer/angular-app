@@ -34,7 +34,10 @@
                     flex-direction: column;
                     color: #555;
                     gap: .4em;
-                    transition: letter-spacing .15s;
+
+                    .input-desc {
+                        transition: letter-spacing .25s;
+                    }
 
                     .input-content {
                         $red: #f00;
@@ -104,8 +107,8 @@
                         color: red;
                     }
 
-                    &:has(.input:focus) {
-                        letter-spacing: .2em;
+                    &:has(.input:focus) .input-desc {
+                        letter-spacing: .1em;
                     }
                 }
 

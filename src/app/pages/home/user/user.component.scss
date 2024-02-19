@@ -1,0 +1,15 @@
+.user-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    background: #eee;
+    border-radius: .5em;
+    height: 100%;
+    width: 100%;
+
+    &.click {
+        cursor: pointer;
+    }
+}

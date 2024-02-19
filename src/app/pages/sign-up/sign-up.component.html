@@ -38,6 +38,7 @@
                         <input
                             [class.invalid]="!(form.get('phone')?.valid)"
                             [class.valid]="form.get('phone')?.valid"
+                            autocomplete="tel-national"
                             type="tel" [className]="'input'" id="phone"
                             [showMaskTyped]="true" mask="(00) 00000-0000"
                             formControlName="phone"
