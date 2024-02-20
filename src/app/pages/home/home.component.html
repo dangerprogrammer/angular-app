@@ -5,9 +5,11 @@
                 <app-user [homeUser]="user"/>
             }
         } @else {
-            <div>Dont has users</div>
+            <div>Dont has users!</div>
         }
     } @else {
-        <div>Loading</div>
+        <app-user/>
+        <app-user/>
+        <app-user/>
     }
 </main>

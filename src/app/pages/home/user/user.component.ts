@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   routeUser?: User;
   anyUser?: User;
   userId?: any;
+  isMe: boolean = !1;
 
   constructor(
     private router: Router,
@@ -25,11 +26,28 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.homeUser) this.user.getUserById(+this.userId).subscribe(user => {
-      this.routeUser = user;
+    const allUsers = this.user.getAllUsers(),
+          me = JSON.parse(this.user.getStorageStatus() as string);
 
-      this.anyUser = this.homeUser || this.routeUser;
-      console.log(this.anyUser);
+    allUsers.subscribe(users => {
+      if (!this.homeUser) {
+        if (this.userId) this.user.getUserById(+this.userId).subscribe(user => {
+          const userIndex = users.findIndex(({ id }) => id == user.id);
+  
+          user = { ...user, skin: this.user.colorsList[userIndex % this.user.colorsList.length] };
+  
+          this.isMe = me.id === user.id;
+          this.routeUser = user;
+          this.anyUser = user;
+        });
+      } else {
+        const userIndex = users.findIndex(({ id }) => id == this.homeUser?.id);
+
+        this.homeUser = { ...this.homeUser, skin: this.user.colorsList[userIndex % this.user.colorsList.length]};
+
+        this.isMe = me.id === this.homeUser.id;
+        this.anyUser = this.homeUser;
+      };
     });
   }
 

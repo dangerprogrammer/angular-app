@@ -8,6 +8,8 @@ import { Observable, map } from 'rxjs';
 })
 export class UserService {
   isSigned: any = !1;
+  colorsList: Array<string> = ['#76f', '#fa0', '#5c2'];
+  // colorPotency = 440;
   http = inject(HttpClient);
 
   getStorageStatus = () => localStorage.getItem("login");
@@ -15,6 +17,20 @@ export class UserService {
   getAllUsers = () => this.http.get<User[]>('nest-api/users');
 
   getUserById = (id: number) => this.http.get<User>(`nest-api/users/${id}`);
+
+  // protected generateRandomColor = () => {
+  //   let red = this.randomBetween({ min: (this.colorPotency - 255) / 2, max: Math.min(255, this.colorPotency / 2) });
+  //   let green = this.randomBetween({ min: (this.colorPotency - 255) / 2, max: Math.min(255, this.colorPotency / 2) });
+  //   let blue = this.colorPotency - red - green;
+
+  //   this.colorsList.push(`rgb(${red}, ${green}, ${blue})`);
+  // };
+
+  // randomBetween = ({min = 0, max = 1}) => Math.floor(Math.random() * (max - min)) + min;
+
+  // generateColorTimes = (times: number) => {
+  //   for (let i = 0; i < times; i++) this.generateRandomColor();
+  // }
 
   getUserByEmail = (email: string): Observable<any> =>
   this.getAllUsers().pipe(map(users => {

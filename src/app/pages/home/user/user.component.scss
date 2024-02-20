@@ -4,12 +4,16 @@
     justify-content: space-around;
     align-items: center;
     padding: 1em;
-    background: #eee;
-    border-radius: .5em;
+    background: var(--bg-color);
     height: 100%;
     width: 100%;
 
-    &.click {
+    &.home {
         cursor: pointer;
+        border-radius: .5em;
+    }
+
+    &.route {
+        min-height: 100vh;
     }
 }

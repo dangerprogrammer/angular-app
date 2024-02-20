@@ -1,6 +1,11 @@
-<section [className]="'user-container'" [class.click]="homeUser" (click)="homeUser ? goToUser() : null">
+<section
+    [class.home]="homeUser" [class.route]="routeUser" class="user-container"
+    [style]="'--bg-color: '+anyUser?.skin+''" (click)="homeUser ? goToUser() : null">
     @if (anyUser) {
-        <h1>{{anyUser.name}}</h1>
+        <h1>{{anyUser.name}}{{isMe ? ' (Você)' : null}}</h1>
+        <h3>{{anyUser.email}}</h3>
         <p>{{anyUser.id}}</p>
-    } @else {}
+    } @else {
+        <div>Loading User...</div>
+    }
 </section>
