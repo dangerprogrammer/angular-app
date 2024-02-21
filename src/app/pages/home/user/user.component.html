@@ -2,9 +2,11 @@
     [class.home]="homeUser" [class.route]="routeUser" class="user-container"
     [style]="'--bg-color: '+anyUser?.skin+''" (click)="homeUser ? goToUser() : null">
     @if (anyUser) {
-        <h1>{{anyUser.name}}{{isMe ? ' (Você)' : null}}</h1>
-        <h3>{{anyUser.email}}</h3>
-        <p>{{anyUser.id}}</p>
+        <article class="main-content">
+            <h1>{{anyUser.name}}{{isMe ? ' (Você)' : null}}</h1>
+            <h3>{{anyUser.email}}</h3>
+        </article>
+        <small><b>(ID: {{anyUser.id}})</b></small>
     } @else {
         <div class="loading">Loading User...</div>
     }

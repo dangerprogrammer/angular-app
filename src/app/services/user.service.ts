@@ -8,7 +8,7 @@ import { Observable, map } from 'rxjs';
 })
 export class UserService {
   isSigned: any = !1;
-  colorsList: Array<string> = ['#76f', '#fa0', '#5c2'];
+  colorsList: Array<string> = ['#94f', '#fa0', '#5c2'];
   // colorPotency = 440;
   http = inject(HttpClient);
 
@@ -33,11 +33,11 @@ export class UserService {
   // }
 
   getUserByEmail = (email: string): Observable<any> =>
-  this.getAllUsers().pipe(map(users => {
-    const user = users.find(({email: userEmail}: any) => userEmail == email);
+    this.getAllUsers().pipe(map(users => {
+      const user = users.find(({ email: userEmail }: any) => userEmail == email);
 
-    return user;
-  }));
+      return user;
+    }));
 
   createUser = (user: User) => this.http.post('nest-api/users', user);
 
@@ -48,11 +48,34 @@ export class UserService {
       this.setExists(!1);
       this.removeRedirect();
     };
-    
+
     localStorage.setItem("login", JSON.stringify(this.isSigned));
 
     return this.isSigned;
   }
+
+  convertToRGB(hexa: string) {
+    const color = hexa.slice(1), { length: colorLength } = color;
+
+    if (!(colorLength % 3) || !(colorLength % 4)) {
+      const isAlpha = !(colorLength % 4), repeat = Math.ceil(colorLength / 4), splittedColor = [];
+
+      for (let i = 0; i < colorLength; i += repeat) {
+        const char = color.substring(i, i + repeat), increment = 2 - repeat;
+        let fullChar = char;
+
+        while (fullChar.length < (increment + 1)) fullChar += char;
+
+        const evalChar = eval(`0x${fullChar}`), divisor: number = +(splittedColor.length % 4 != 3) || 0xff;
+
+        splittedColor.push(evalChar / divisor);
+      };
+
+      const fullColor = `rgb${isAlpha ? 'a' : ''}(${splittedColor.join(', ')})`;
+
+      return fullColor;
+    } else return "hexa invalido!";
+  };
 
   setExists = (status: boolean | User) => status ? localStorage.setItem("exist-user", JSON.stringify(status)) : localStorage.removeItem("exist-user");
 

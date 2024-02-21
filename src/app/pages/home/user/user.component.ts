@@ -27,15 +27,16 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     const allUsers = this.user.getAllUsers(),
-          me = JSON.parse(this.user.getStorageStatus() as string);
+      me = JSON.parse(this.user.getStorageStatus() as string);
 
+    console.log(this.user.convertToRGB('#f00'));
     allUsers.subscribe(users => {
       if (!this.homeUser) {
         if (this.userId) this.user.getUserById(+this.userId).subscribe(user => {
           const userIndex = users.findIndex(({ id }) => id == user.id);
-  
+
           user = { ...user, skin: this.user.colorsList[userIndex % this.user.colorsList.length] };
-  
+
           this.isMe = me.id === user.id;
           this.routeUser = user;
           this.anyUser = user;
@@ -43,7 +44,7 @@ export class UserComponent implements OnInit {
       } else {
         const userIndex = users.findIndex(({ id }) => id == this.homeUser?.id);
 
-        this.homeUser = { ...this.homeUser, skin: this.user.colorsList[userIndex % this.user.colorsList.length]};
+        this.homeUser = { ...this.homeUser, skin: this.user.colorsList[userIndex % this.user.colorsList.length] };
 
         this.isMe = me.id === this.homeUser.id;
         this.anyUser = this.homeUser;
